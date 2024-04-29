@@ -1,0 +1,21 @@
+package com.example.ott.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.ott.model.MovieRepo;
+import com.example.ott.model.Movies;
+
+import java.util.List;
+
+@Service
+public class MovieService {
+
+    @Autowired
+    private MovieRepo movieRepository;
+
+    public List<Movies> searchMovies(String keyword) {
+        return movieRepository.findByNameContaining(keyword);
+    }
+}
+

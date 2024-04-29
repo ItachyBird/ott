@@ -1,0 +1,8 @@
+package com.example.ott.model;
+
+import com.example.ott.model.Movie;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface MovieRepository extends JpaRepository<Movie, Long> {
+    // You can add custom query methods if needed
+}

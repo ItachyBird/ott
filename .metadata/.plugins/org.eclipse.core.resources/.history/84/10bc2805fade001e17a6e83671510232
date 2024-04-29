@@ -1,0 +1,24 @@
+package com.example.ott.service;
+
+import com.example.ott.model.Favourites;
+import com.example.ott.model.FavouriteRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class FavouriteService {
+
+    private final FavouriteRepository favoriteRepository;
+
+    @Autowired
+    public FavouriteService(FavouriteRepository favoriteRepository) {
+        this.favoriteRepository = favoriteRepository;
+    }
+
+    public void addFavorite(Long userId, Long movieId) {
+        Favourites favorite = new Favourites();
+        favorite.setId(userId); // Set the user ID
+        favorite.setMovieId(movieId); // Set the movie ID
+        favoriteRepository.save(favorite); // Save the favorite to the database
+    }
+}

@@ -1,0 +1,114 @@
+package com.example.ott.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.example.ott.model.User;
+import com.example.ott.model.UserRepo;
+
+@Controller
+public class UserController {
+	
+	@Autowired
+	UserRepo urepo;
+
+	@RequestMapping("indexheader")
+	public String IndexHeader() {
+		return "index_header";
+	}
+
+	@RequestMapping("indexfooter")
+	public String IndexFooter() {
+		return "index_footer";
+	}
+	@RequestMapping("catagory")
+	public String catagory()
+	{
+		return "catagory";
+	}
+	@RequestMapping("index")
+	public String Index() {
+		return "index";
+	}
+
+	@RequestMapping("signup")
+	public String signup() {
+		return "signup";
+	}
+
+	@RequestMapping("about")
+	public String about() {
+		return "about";
+	}
+
+	@RequestMapping("categories")
+	public String categories() {
+		return "categories";
+	}
+
+	@RequestMapping("admlogin")
+	public String adminlogin() {
+		return "adminlogin";
+	}
+
+	@RequestMapping("fav")
+	public String fav() {
+		return "fav";
+	}
+
+	@RequestMapping("admheader")
+	public String admheader() {
+		return "admheader";
+	}
+
+	@RequestMapping("loginproc")
+	public String loginprocess(@RequestParam("uemail") String email, @RequestParam("upass") String password, ModelMap model) {
+		User user = urepo.findByEmail(email);
+		if (user != null && user.getPassword().equals(password)) {
+			return "admin_dashboard";
+		} else {
+			model.put("msg", "Email or password incorrect");
+			return "adminlogin";
+		}
+	}
+
+	@RequestMapping("dlogin")
+	public String dlogin() {
+		return "admin_dashboard";
+	}
+
+	@RequestMapping("regprocess")
+	public String register(@RequestParam("uname") String name, @RequestParam("uemail") String email,
+			@RequestParam("uphno") String phno, @RequestParam("upass") String pass,
+			@RequestParam("upass") String password, @RequestParam("uans") String answer) {
+		User u = new User();
+		u.setName(name);
+		u.setEmail(email);
+		u.setPhno(phno);
+		u.setPassword(password);
+		u.setAnswer(answer);
+		urepo.save(u);
+		return "index";
+	}
+
+
+
+	// New method to update user favorites
+	@RequestMapping("updateFavourites")
+	public String updateFavourites(@RequestParam("email") String email, ModelMap model) {
+		User user = urepo.findByEmail(email);
+		if (user != null) {
+			user.setFavourites("0"); // Set favourites to '0'
+			urepo.save(user); // Save the updated user
+			model.put("msg", "User favourites updated successfully");
+		} else {
+			model.put("msg", "User not found");
+		}
+		return "fav"; // Redirect back to the favourites page
+	}
+	
+	
+}

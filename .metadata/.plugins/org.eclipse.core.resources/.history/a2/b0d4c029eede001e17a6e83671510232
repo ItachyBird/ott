@@ -1,0 +1,26 @@
+package com.example.ott.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.example.ott.model.Movies;
+import com.example.ott.service.MovieService;
+
+import java.util.List;
+
+@Controller
+public class MovieController {
+
+    @Autowired
+    private MovieService movieService;
+
+    @GetMapping("/movies/search")
+    public String searchMovies(@RequestParam String keyword, Model model) {
+        List<Movies> movies = movieService.searchMovies(keyword);
+        model.addAttribute("movies", movies);
+        return "search"; // Return the name of the JSP page
+    }
+}

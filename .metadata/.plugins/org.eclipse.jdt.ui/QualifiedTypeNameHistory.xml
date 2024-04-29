@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="org.springframework.ui.ModelMap"/>
+    <fullyQualifiedTypeName name="org.hibernate.mapping.List"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.example.ott.model.MovieRepo"/>
+    <fullyQualifiedTypeName name="com.example.ott.service.MovieService"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Entity"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Table"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.GeneratedValue"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Column"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.GenerationType"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.ManyToOne"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.JoinColumn"/>
+    <fullyQualifiedTypeName name="com.example.ott.model.User"/>
+    <fullyQualifiedTypeName name="com.example.ott.service.FavouriteService"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="com.example.ott.model.FavouriteRepository"/>
+    <fullyQualifiedTypeName name="com.example.ott.model.UserRepo"/>
+    <fullyQualifiedTypeName name="com.example.ott.model.MoviesRepo"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="com.example.ott.model.Favourites"/>
+    <fullyQualifiedTypeName name="com.example.ott.model.Movies"/>
+    <fullyQualifiedTypeName name="org.apache.catalina.User"/>
+</qualifiedTypeNameHistroy>

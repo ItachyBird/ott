@@ -1,0 +1,19 @@
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+server.port=8024
+
+spring.datasource.url=jdbc:mysql://localhost:3306/netflix?useSSL=false
+
+spring.datasource.username=root
+
+spring.datasource.password=piyali
+
+ spring.jpa.show-sql=true
+
+ spring.jpa.hibernate.ddl-auto=update
+
+ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+ 
+ 
+ spring.mvc.view.prefix=/WEB-INF/view/
+ spring.mvc.view.suffix=.jsp
+ 

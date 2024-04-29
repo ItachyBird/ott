@@ -1,0 +1,55 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
+<%@ page import="java.util.*" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Display Favorites</title>
+</head>
+<body>
+
+<%
+    // Define your database connection parameters
+    String url = "jdbc:mysql://localhost:3306/your_database";
+    String username = "your_username";
+    String password = "your_password";
+
+    Connection connection = null;
+    Statement statement = null;
+    ResultSet resultSet = null;
+
+    try {
+        // Establish database connection
+        Class.forName("com.mysql.jdbc.Driver");
+        connection = DriverManager.getConnection(url, username, password);
+
+        // Execute SQL query
+        String sql = "SELECT * FROM favourites";
+        statement = connection.createStatement();
+        resultSet = statement.executeQuery(sql);
+
+        // Display fetched data
+        while(resultSet.next()) {
+            out.println("ID: " + resultSet.getInt("id") + "<br>");
+            out.println("User ID: " + resultSet.getInt("user_id") + "<br>");
+            out.println("Movie ID: " + resultSet.getInt("movie_id") + "<br>");
+            out.println("Email: " + resultSet.getString("email") + "<br>");
+            out.println("<hr>");
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    } finally {
+        // Close database resources
+        try {
+            if (resultSet != null) resultSet.close();
+            if (statement != null) statement.close();
+            if (connection != null) connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+%>
+
+</body>
+</html>

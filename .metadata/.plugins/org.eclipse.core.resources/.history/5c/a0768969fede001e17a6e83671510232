@@ -1,0 +1,36 @@
+package com.example.ott.service;
+
+import com.example.ott.model.Favourites;
+import com.example.ott.model.Movies;
+import com.example.ott.model.MoviesRepo;
+import com.example.ott.model.User;
+import com.example.ott.model.UserRepo;
+import com.example.ott.model.FavouriteRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class FavouriteService {
+
+    private final FavouriteRepository favouriteRepository;
+    private final UserRepo userRepository;
+    private final MoviesRepo moviesRepository;
+
+    @Autowired
+    public FavouriteService(FavouriteRepository favouriteRepository, UserRepo userRepository, MoviesRepo moviesRepository) {
+        this.favouriteRepository = favouriteRepository;
+        this.userRepository = userRepository;
+        this.moviesRepository = moviesRepository;
+    }
+
+    public void addFavorite(Integer userId, Long movieId) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+        Movies movie = moviesRepository.findById(movieId).orElseThrow(() -> new RuntimeException("Movie not found"));
+
+        Favourites favourite = new Favourites();
+        favourite.setUser(user);
+        favourite.setMovie(movie);
+
+        favouriteRepository.save(favourite);
+    }
+}

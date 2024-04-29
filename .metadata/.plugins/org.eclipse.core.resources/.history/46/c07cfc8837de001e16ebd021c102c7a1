@@ -1,0 +1,267 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensure padding and border are included in element's total width and height */
+}
+
+  body {
+    font-family: "Roboto", sans-serif;
+    background: black;
+  }
+
+
+
+
+
+
+
+
+
+
+
+  .menu-list {
+    display: flex;
+    list-style: none;
+  }
+
+  .menu-list-item {
+    margin-right: 30px;
+  }
+
+  .menu-list-item.active {
+    font-weight: bold;
+  }
+  .profile-container {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .profile-text-container {
+    margin: 0 20px;
+  }
+
+  .profile-picture {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .toggle {
+    width: 40px;
+    height: 20px;
+    background-color: white;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+  }
+
+  .toggle-icon {
+    color: goldenrod;
+  }
+
+  .toggle-ball {
+    width: 18px;
+    height: 18px;
+    background-color: black;
+    position: absolute;
+    right: 1px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 1s ease all;
+  }
+
+
+
+
+
+  .container {
+    background-color: black;
+    min-height: calc(100vh - 50px);
+    color: white;
+  }
+
+  .content-container {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
+  .featured-content {
+    height: 50vh;
+    padding-top: 50px;
+    text-align: center;
+    
+  }
+
+  .featured-title {
+    width: 200px;
+  }
+
+.featured-desc {
+    width: 700px;
+    color: white;
+    margin: 200px auto 30px auto; /* Adjust margin-top to shift down */
+    text-align: center; /* Center align text */
+    font-size: 200px;
+    transition: all 1s ease-in-out;
+    opacity: 0;
+}
+
+.featured-button {
+    background-color: black;
+    color: white;
+    float: left;
+    padding: 20px 40px; /* Increase padding for larger button */
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    transition: all 1s ease-in-out;
+    opacity: 0;
+    font-size: 24px; /* Increase font size */
+    margin-top: 50px; /* Adjust margin-top to shift the button down */
+}
+
+  .movie-list-container {
+    padding: 0 20px;
+  }
+
+  .movie-list-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .movie-list {
+    display: flex;
+    align-items: center;
+    height: 300px;
+    transform: translateX(0);
+    transition: all 1s ease-in-out;
+  }
+
+  .movie-list-item {
+    margin-right: 30px;
+    position: relative;
+  }
+
+  .movie-list-item:hover .movie-list-item-img {
+    transform: scale(1.2);
+    margin: 0 30px;
+    opacity: 0.5;
+  }
+
+  .movie-list-item:hover .movie-list-item-title,
+  .movie-list-item:hover .movie-list-item-desc,
+  .movie-list-item:hover .movie-list-item-button {
+    opacity: 1;
+  }
+ .featured-content:hover .featured-desc,
+.featured-content:hover .featured-button {
+    opacity: 1; /* Make .featured-desc and .featured-button opaque when .featured-content is hovered */
+}
+  
+
+  .movie-list-item-img {
+    transition: all 1s ease-in-out;
+    width: 270px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+
+  .movie-list-item-title {
+    background-color: #333;
+    padding: 0;
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    top: 10%;
+    left: 50px;
+    opacity: 0;
+    transition: 1s all ease-in-out;
+  }
+
+.movie-list-item-desc {
+    background-color: #333;
+    padding: 0;
+    font-size: 11px;
+    position: absolute;
+    top: 30%;
+    left: 50px;
+    width: 230px;
+    max-height: 200px; /* Set maximum height */
+    overflow: hidden; /* Hide any overflow content */
+    opacity: 0;
+    transition: 1s all ease-in-out;
+}
+
+
+.movie-list-item-button {
+    padding: 0;
+    background-color: black;
+    color: white;
+    border-radius: 50%; /* Make it a circle */
+    width: 40px; /* Adjust size as needed */
+    height: 40px; /* Adjust size as needed */
+    outline: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px; /* Adjust position as needed */
+    right: 10px; /* Adjust position as needed */
+    opacity: 0;
+    transition: 1s all ease-in-out;
+    z-index: 1; /* Ensure it's above the image */
+    
+}
+
+  .arrow {
+    font-size: 120px;
+    position: absolute;
+    top: 90px;
+    right: 0;
+    color: lightgray;
+    opacity: 0.5;
+    cursor: pointer;
+  }
+
+  .container.active {
+    background-color: white;
+  }
+
+  .movie-list-title.active {
+    color: black;
+  }
+
+  .navbar-container.active {
+    background-color: white;
+
+    color: black;
+  }
+
+  .sidebar.active{
+      background-color: white;
+  }
+
+  .left-menu-icon.active{
+      color: black;
+  }
+
+  .toggle.active{
+      background-color: black;
+  }
+
+  .toggle-ball.active{
+      background-color: white;
+      transform: translateX(-20px);
+  }
+
+  @media only screen and (max-width: 940px){
+      .menu-container{
+          display: none;
+      }
+  }

@@ -1,0 +1,27 @@
+package com.example.ott.controller;
+
+import com.example.ott.service.FavouriteService;
+import com.example.ott.service.FavouriteService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class FavouriteController {
+
+    private final FavouriteService favoriteService;
+
+    @Autowired
+    public FavouriteController(FavouriteService favoriteService) {
+        this.favoriteService = favoriteService;
+    }
+
+    @PostMapping("/favorites/add")
+    public ResponseEntity<String> addFavorite(@RequestParam Integer userId, @RequestParam Long movieId) {
+        favoriteService.addFavorite(userId, movieId);
+        return ResponseEntity.ok("Movie added to favorites successfully.");
+    }
+}

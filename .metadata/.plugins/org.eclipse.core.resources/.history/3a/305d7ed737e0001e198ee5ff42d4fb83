@@ -1,0 +1,147 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<jsp:include page="index_header.jsp" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap" rel="stylesheet">
+    <!-- Your other CSS files -->
+    <link rel="stylesheet" href="/css/indexstyle.css">
+    <style>
+        body {
+            background:linear-gradient(to bottom, hsl(270, 100%, 10%), black 90%); /* Gradient background */
+            color: #fff; /* Text color */
+        }
+
+        .card {
+            background-color: rgba(0, 0, 0, 0.7); /* Transparent black background for the card */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center">User Registration</h5>
+                    <!-- Registration Form -->
+                    <form name="registration" method="post" class="mx-1 mx-md-4" onsubmit="return validate()" action="regprocess">
+    <div class="mb-3">
+        <label for="validationDefault01" class="form-label"><b>Your Name</b></label>
+        <input type="text" id="validationDefault01" name="uname" class="form-control" placeholder="Enter Your Full Name">
+        <span id="nameloc" style="color:red"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="form3Example3c"><b>Your Email</b></label>
+        <input type="text" id="form3Example3c1" name="uemail" class="form-control" placeholder="example@domail.com"/>
+        <span id="emailloc" style="color:red"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="form3Example3d"><b>Your Mobile Number</b></label>
+        <input type="tel" id="form3Example3d2" name="uphno" class="form-control" placeholder="Enter Phone Number"/>
+        <span id="numloc" style="color:red"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="form3Example4c"><b>Password</b></label>
+        <input type="password" id="form3Example4c" name="upass" class="form-control" placeholder="Enter a Password"/>
+        <span id="upasloc" style="color:red"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="form3Example4cd"><b>Confirm Your Password</b></label>
+        <input type="password" id="form3Example4cd" name="conpass" class="form-control" placeholder="Renter the Password"/>
+        <span id="cpasloc" style="color:red"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="form3Example4ce"><b>Security Question:</b></label>
+        <select name="SecurityQuestion" class="backup form-control" required>
+            <option value="What was the name of your childhood friend?">What is your favourite movie?</option>
+            <option value="What was the name of your first car?">Which movie makes you cry?</option>
+            <option value="What is your favourate food?">What movie makes you feel good?</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="form3Example4cf"><b>Answer</b></label>
+        <input type="text" id="form3Example4cf" name="uans" class="form-control"/>
+    </div>
+    <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-dark btn-lg"><b>Register</b></button>
+    </div>
+</form>
+
+                    <!-- End of Registration Form -->
+                    <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href='login' class="fw-bold text-body"><u>Login here</u></a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
+
+<script>
+function validate() {
+    //event.preventDefault(); // Prevent default form submission
+    
+    var uphno = document.registration.uphno.value;
+    var upass = document.registration.upass.value;
+    var conpass = document.registration.conpass.value;
+    var uname = document.registration.uname.value;
+    var uemail = document.registration.uemail.value;
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+    var isValid = true; // Variable to track overall form validation
+    
+    // Validate name
+    if (uname.length < 3) {
+        document.getElementById("nameloc").innerHTML = "NAME MUST BE AT LEAST 3 CHARACTERS LONG!!";
+        isValid = false;
+    } else {
+        document.getElementById("nameloc").innerHTML = "";
+    }
+    console.log(isValid);
+    // Validate email
+     if (!emailRegex.test(uemail)) {
+        document.getElementById("emailloc").innerHTML = "ENTER A VALID EMAIL ADDRESS!!";
+        isValid = false;
+    } else {
+        document.getElementById("emailloc").innerHTML = "";
+    }
+    console.log(isValid);
+    // Validate phone number
+    if (uphno.length < 10) {  
+        document.getElementById("numloc").innerHTML = "ENTER A VALID PHONE NUMBER!!";
+        isValid = false;
+    } else {
+        document.getElementById("numloc").innerHTML = "";
+    }
+    console.log(isValid);
+    // Validate password
+    if (upass.length < 8) {
+        document.getElementById("upasloc").innerHTML = "PASSWORD SHOULD BE AT LEAST 8 CHARACTERS LONG!!";
+        isValid = false;
+    } else if (upass != conpass) {
+        document.getElementById("upasloc").innerHTML = "PASSWORDS DO NOT MATCH!!";
+        document.getElementById("cpasloc").innerHTML = "PASSWORDS DO NOT MATCH!!";
+        isValid = false;
+    } else {
+        document.getElementById("upasloc").innerHTML = "";
+        document.getElementById("cpasloc").innerHTML = "";
+    }
+    console.log(isValid);
+    // If all conditions are satisfied, return true
+    return isValid;
+}
+
+</script>
+
+
+</body>
+</html>

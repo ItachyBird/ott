@@ -1,0 +1,8 @@
+package com.example.ott.model;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+public interface MovieRepo extends JpaRepository<Movies, Long> {
+    List<Movies> findByMovieNameContaining(String keyword);
+}

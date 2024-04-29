@@ -1,0 +1,38 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Movies</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<form id="searchForm">
+    <input type="text" id="keywordInput" placeholder="Enter keyword">
+    <button type="submit">Search</button>
+</form>
+
+<ul id="movieList"></ul>
+
+<script>
+    $(document).ready(function() {
+        $("#searchForm").submit(function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            var keyword = $("#keywordInput").val(); // Get the keyword from the input field
+
+            $.get("${pageContext.request.contextPath}/movies/search?keyword=" + keyword, function(data) {
+                // Clear previous search results
+                $("#movieList").empty();
+
+                // Append retrieved movies to the list
+                $.each(data, function(index, movie) {
+                    $("#movieList").append("<li>" + movie.name + "</li>");
+                });
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

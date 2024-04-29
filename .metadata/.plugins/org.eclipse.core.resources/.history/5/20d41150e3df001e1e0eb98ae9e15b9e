@@ -1,0 +1,139 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Bootstrap CSS link -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(to bottom, rgba(0,0,0,0), black), url(	'/image/51001-movie-poster-wallpaper-top-free-movie-poster-background.jpg');
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            padding: 80px;
+            border-radius: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            width: 80%;
+            max-width: 400px;
+        }
+
+        .form-label, .btn {
+            color: #ffffff;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        .btn {
+            background-color: transparent;
+            padding: 7px 40px;
+            color: white;
+            font-weight: bold;
+            border: 2px solid grey;
+            border-radius: 5px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .btn:hover {
+            background-color: white;
+            color: black;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: underline;
+            margin-left: 10px;
+        }
+      .top-left-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            padding-top: 0;
+            background-color: #333;
+            color: white;
+            border: 2px solid white;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .top-left-button:hover {
+            background-color: white;
+            color: #333;
+        }
+
+        .top-left-button:hover::after {
+            content: "Back";
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <h1 class="formheading">LOGIN</h1>
+
+                <!-- Login Form -->
+                <form action="loginproc" method="post" class="mx-1 mx-md-4">
+                    <div class="mb-3">
+                        <label for="inputEmail" class="form-label"><b>Email</b></label>
+                        <input type="email" id="uemail" name="uemail" class="form-control" required/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputPassword" class="form-label"><b>Password</b></label>
+                        <input type="password" id="inputPassword" name="upass" class="form-control" required/>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-lg"><b>Login</b></button>
+                    </div>
+                </form>
+                <!-- End of Login Form -->
+                <p class="text-center text-muted mt-3 mb-0">Don't have an account? <a href='signup' class="fw-bold text-body"style="color: blue;"><u>signup</u></a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<a href="index" class="top-left-button"><i class="fas fa-arrow-left"></i></a>
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

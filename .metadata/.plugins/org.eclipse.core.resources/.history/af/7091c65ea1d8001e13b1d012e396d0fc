@@ -1,0 +1,99 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category Page</title>
+    <style>
+        body {
+            background-color: #f0f0f0; /* Set fallback background color */
+            margin: 0;
+            padding: 0;
+            background-image: linear-gradient(to right, #ff0000, #000000);
+
+        }
+
+        /* Container for all images */
+        .image-container {
+            display: flex; /* Use flexbox */
+            justify-content: space-between; /* Distribute space between items */
+            margin-bottom: 20px; /* Added to create space between images */
+        }
+
+        /* Individual image container */
+        .image-item {
+            position: relative;
+            width: calc(30% - 10px); /* Adjust the width as needed */
+            overflow: hidden; /* Hide overflow for smooth animation */
+            border: 1px solid #ccc; /* Add border for visibility */
+        }
+
+        .image-item img {
+            width: 100%;
+            height: auto;
+            object-fit: cover; /* Ensure the image covers the container */
+            aspect-ratio: 4 / 3; /* Set aspect ratio to 4:3 */
+        }
+
+        /* Scale up image on hover */
+        .image-item:hover img {
+            transform: scale(1.1); /* Scale up the image by 10% on hover */
+        }
+
+        /* Hover overlay */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+            opacity: 0; /* Initially hidden */
+            transition: opacity 0.3s ease; /* Smooth transition effect */
+        }
+
+        .image-item:hover .overlay {
+            opacity: 1; /* Show the overlay on hover */
+        }
+
+        .overlay-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Center the content horizontally and vertically */
+            text-align: center;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Movie Categories</h1>
+    <div class="image-container">
+        <div class="image-item">
+            <img src="https://wallpapers.com/images/featured-full/horror-geg5qaw6axcmxou6.jpg" onclick="window.location.href='horror.html';">
+            <div class="overlay">    
+                <div class="overlay-content">
+                    <h2>Horror</h2>
+                </div>
+            </div>
+        </div>
+        <div class="image-item">
+            <img src="https://www.shutterstock.com/image-photo/hikers-backpacks-relaxing-on-top-600nw-525243061.jpg" onclick="window.location.href='adventure.html';">
+            <div class="overlay">
+                <div class="overlay-content">
+                    <h2>Adventure</h2>
+                </div>
+            </div>
+        </div>
+        <div class="image-item">
+            <img src="https://wallpapers.com/images/hd/anime-fight-eren-and-titan-7s8g2zy7xxdmfziy.jpg" onclick="window.location.href='action.html';">
+            <div class="overlay">
+                <div class="overlay-content">
+                    <h2>Action</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
